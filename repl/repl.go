@@ -17,7 +17,8 @@ func help() (string, error) {
 	return "help", nil
 }
 
-func exit() (c net.Conn) {
+func exit(c net.Conn) {
 	c.Close()
-	return
 }
+
+func tables()
