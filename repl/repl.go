@@ -4,21 +4,30 @@ import (
 	"net"
 )
 
-func ParseCommands(c string) (string, error) {
-	if c == "salam\n" {
-		return help()
-	} else if c == ".exit\n" {
-		exit()
+func ExecuteCommand(c string) (string, error) {
+
+	if string(c[0]) == "." {
+		if c == ".help" {
+			help()
+		} else if c == ".exit\n" {
+			exit()
+		}
+	} else {
+		parser(c)
 	}
+
 	return "Command Not Found", nil
+}
+
+func parser(c string) {
+
 }
 
 func help() (string, error) {
 	return "help", nil
 }
 
-func exit(c net.Conn) {
+func exit() (c net.Conn) {
 	c.Close()
+	return
 }
-
-func tables()

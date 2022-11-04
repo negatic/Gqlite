@@ -8,9 +8,10 @@ import (
 )
 
 func handleConn(c net.Conn) {
+
 	c.Write([]byte("gqlite>"))
 	data, _ := bufio.NewReader(c).ReadString('\n')
-	r, _ := repl.ParseCommands(data)
+	r, _ := repl.ExecuteCommand(data)
 	c.Write([]byte(r))
 	c.Write([]byte("\n"))
 }
